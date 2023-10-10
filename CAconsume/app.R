@@ -31,38 +31,23 @@ ui <- bootstrapPage(
                           tags$h1("Modify Data Inputs"),
                           tags$br(),
                           HTML(paste0(
-                            "<p>Below are the inputs necessary to obtain localized predictions from our DDT model that can be modified with user input. Use options below to:</p>",
-                            "<ul><li>Select the fish species caught</li><li>Select the location of capture</li><li>Select your demographic group</li></ul>", 
+                            "<p>A side panel where users can select the correct inputs for their specific catch. To obtain accurate model predictions, users will need to:</p>",
+                            "<ul><li>Select the fish species caught</li><li>Select the location of capture</li><li>Select the correct demographic group</li></ul>", 
                             "<p>All options will be in the form of drop-down buttons.</p>"
                             
                           )),
                         ), 
-                        mainPanel("Pictures of Fish"))), 
+                        mainPanel(
+                          tags$h2("Model Predictions for DDT"),
+                          "A plot comparing the distribution of predicted DDT concentration from the best-fit model for the specific fish-location combination
+                                  to Advisory Tissue Levels (ATLs) for the specificied demographic group. The recommended servings per week should be readily apparent.", 
+                          tags$h2("CA Consumption Recommendations"), 
+                          "Below model predictions for DDT, there should be a figure or text box that pops up with CA Consumption advice (so encompassing all 
+                          contaminants not just DDT) from OEHAA recommendations."
+                        ))), 
                       
   ))
                       
-                      
-# ui <- fluidPage(
-# 
-#     # Application title
-#     titlePanel("Old Faithful Geyser Data"),
-# 
-#     # Sidebar with a slider input for number of bins 
-#     sidebarLayout(
-#         sidebarPanel(
-#             sliderInput("bins",
-#                         "Number of bins:",
-#                         min = 1,
-#                         max = 50,
-#                         value = 30)
-#         ),
-# 
-#         # Show a plot of the generated distribution
-#         mainPanel(
-#            plotOutput("distPlot")
-#         )
-#     )
-# )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
